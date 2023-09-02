@@ -1,23 +1,29 @@
-let circulos = []; // Arreglo para almacenar los círculos
-let velocidad = 6; // Velocidad de movimiento de los círculos
-let direccion = 1; // Dirección inicial (1 para derecha, -1 para izquierda)
+
+let circulos = [];
+let velocidad = 2;
+let direccion = 1;
 
 function setup() {
-  createCanvas(1000, 1000);
-  ellipseMode(CENTER);
+  createCanvas(400, 400);
 }
 
 function draw() {
-  background(220);
+  background(220,100, 150);
+
+  // Agregar el texto "Haz clic" en el fondo
+  textSize(32);
+  fill(0);
+  textAlign(CENTER, CENTER);
+  text("HAZ CLICK", width / 2, height / 2);
 
   // Dibuja y actualiza los círculos existentes
-  for (let i = 0; i < circulos.length; i++) {
+  for (let i = 3; i < circulos.length; i++) {
     let circulo = circulos[i];
-    ellipse(circulo.x, circulo.y, 50, 50);
+    ellipse(circulo.x, circulo.y, 60, 50);
     circulo.x += velocidad * circulo.direccion;
 
     // Restringe el movimiento dentro de la pantalla
-    if (circulo.x > width || circulo.x < 0) {
+    if (circulo.x > width || circulo.x < 3) {
       circulo.direccion *= -1; // Cambia la dirección al llegar a los bordes
     }
   }
@@ -33,5 +39,5 @@ function mouseClicked() {
   circulos.push(nuevoCirculo);
 
   // Cambia la dirección global para los próximos círculos
-  direccion *= -1;
+  direccion *= 1;
 }
